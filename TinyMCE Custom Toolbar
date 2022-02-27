@@ -1,0 +1,30 @@
+// ACF > WYSIWYG — Custom Toolbar
+add_filter( 'acf/fields/wysiwyg/toolbars', function ( $toolbars ) {
+
+  // Unset Basic Type Toolbar
+  unset( $toolbars['Basic'] );
+
+  // [1] formatselect. bold, italic, bullist, numlist, blockquote, alignleft, aligncenter, alignright, link, wp_more, spellchecker, fullscreen, wp_adv
+  // [2] strikethrough, hr, forecolor, pastetext, removeformat, charmap, outdent, indent, undo, redo, wp_help
+
+  // Register a basic toolbar with a single row of options
+  $toolbars['Full'][1] = [ 
+    'link', 
+    'unlink',
+    'formatselect',
+    'fontsizeselect',
+    'bold', 
+    'italic',
+    'alignleft', 
+    'aligncenter', 
+    'alignright', 
+    'bullist',
+    'numlist',
+    'forecolor',
+    'hr',
+    'removeformat'
+  ];
+  $toolbars['Full'][2] = [];
+
+  return $toolbars;
+});
