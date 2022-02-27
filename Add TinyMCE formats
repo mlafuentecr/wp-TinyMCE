@@ -1,29 +1,23 @@
+<?php
+
 
 /*-----------------------------------------------------------------*/
 //     ADD tiny_mce FORMATS
 /*-----------------------------------------------------------------*/
 
 
-//add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
-add_action( 'after_setup_theme', 'add_tinyMce_formats' );
-function add_tinyMce_formats()
-{
-    add_editor_style();
-}
 
-add_filter('mce_buttons_2', 'wpse3882_mce_buttons_2');
-function wpse3882_mce_buttons_2($buttons)
+add_filter('mce_buttons_2', 'add_mce_buttons_2');
+function add_mce_buttons_2($buttons)
 {
     array_unshift($buttons, 'styleselect');
     return $buttons;
 }
 
-add_filter('tiny_mce_before_init', 'wpse3882_tiny_mce_before_init');
-function wpse3882_tiny_mce_before_init($settings)
+add_filter('tiny_mce_before_init', 'add_tiny_mce_before_init');
+function add_tiny_mce_before_init($settings)
 {
-    $settings['theme_advanced_blockformats'] = 'p,h1,h2,h3,h4';
-
-    // From http://tinymce.moxiecode.com/examples/example_24.php
+   
     $style_formats = array(
       array(  
         'title' => 'rs_underline',  
@@ -63,11 +57,6 @@ function wpse3882_tiny_mce_before_init($settings)
 
 
 
-
-
-
-
-
 ////ADD THE STYLE
 
 function add_editor_styles_sub_dir() {
@@ -75,3 +64,5 @@ function add_editor_styles_sub_dir() {
 }
 add_action( 'after_setup_theme', 'add_editor_styles_sub_dir' );
 
+
+?>
